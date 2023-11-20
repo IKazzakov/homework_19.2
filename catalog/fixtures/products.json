@@ -1,0 +1,74 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Iphone 14",
+      "description": "смартфон",
+      "category": 1,
+      "price": "100000.00",
+      "date_published": "2023-09-14T12:46:33.794Z",
+      "date_modified": "2023-09-14T13:24:58.716Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Шапка",
+      "description": "Зимняя одежда",
+      "category": 2,
+      "price": "30.00",
+      "date_published": "2023-09-10T12:46:33.794Z",
+      "date_modified": "2023-09-11T13:24:58.716Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Яблоко",
+      "description": "Gold apple",
+      "category": 3,
+      "price": "10.00",
+      "date_published": "2023-07-14T11:46:33.794Z",
+      "date_modified": "2023-08-14T14:24:58.716Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Samsung Galaxy",
+      "description": "смартфон",
+      "category": 1,
+      "price": "150000.00",
+      "date_published": "2023-09-01T12:46:33.794Z",
+      "date_modified": "2023-09-21T13:24:58.716Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Футболка",
+      "description": "Верхняя одежда",
+      "category": 2,
+      "price": "2000.00",
+      "date_published": "2023-04-14T12:46:33.794Z",
+      "date_modified": "2023-06-14T13:24:58.716Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Фундук",
+      "description": "Орехи",
+      "category": 3,
+      "price": "100.00",
+      "date_published": "2023-09-14T16:46:33.794Z",
+      "date_modified": "2023-09-14T19:24:58.716Z"
+    }
+  }
+]
