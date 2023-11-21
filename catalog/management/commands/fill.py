@@ -1,7 +1,7 @@
 from django.core.management import BaseCommand
 from config.settings import BASE_DIR
 from catalog.models import Category, Product
-from django.shortcuts import get_object_or_404
+# from django.shortcuts import get_object_or_404
 import os
 import json
 
@@ -27,7 +27,7 @@ class Command(BaseCommand):
             products_for_create = []
             for product in products:
                 category_id = product['fields']['category']
-                product['fields']['category'] = get_object_or_404(Category, pk=category_id)
+                product['fields']['category'] = Category.objects.get(pk=category_id)
                 products_for_create.append(Product(**product['fields']))
 
             Product.objects.bulk_create(products_for_create)
