@@ -10,7 +10,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title pricing-card-title">{{product.category}}</h5>
-                <img src={{product.image.url}} width=550 height=320>
+                <img src='{{product.image.url}}' width=550 height=320>
                 <p class="card-text">{{product.description | truncatechars:100}}</p>
                 <h1 class="card-title pricing-card-title">{{product.price | floatformat:2}}</h1>
                 <a type="button" class="btn btn-lg btn-block btn-outline-primary"
