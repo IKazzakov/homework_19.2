@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'catalog'
+    'catalog',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'catalog_db',
         'USER': 'postgres',
-        'PASSWORD': '', # enter your password
+        'PASSWORD': 'kaza4ok89',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
