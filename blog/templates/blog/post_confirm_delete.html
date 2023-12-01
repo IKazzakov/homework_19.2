@@ -10,7 +10,7 @@
                             {% csrf_token %}
                             <p>Are you sure you want to delete "{{ object }}"?</p>
                             <button type="submit" class="btn btn-danger"> Delete </button>
-                            <a href="{% url 'materials:list' %}" class="btn btn-warning"> Cancel </a>
+                            <a href="{% url 'blog:post_list' %}" class="btn btn-warning"> Cancel </a>
                         </form>
                     </div>
                 </div>
