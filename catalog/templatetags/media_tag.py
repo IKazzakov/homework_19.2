@@ -7,4 +7,4 @@ register = template.Library()
 
 @register.simple_tag
 def media_tag(product):
-    return '/media/'+str(product)
+    return MEDIA_URL + str(product)
