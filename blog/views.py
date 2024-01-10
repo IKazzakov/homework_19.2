@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -19,7 +20,7 @@ class PostListView(ListView):
         return qs
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     extra_context = {
         'title': 'Create post',
@@ -45,7 +46,7 @@ class PostDetailView(DetailView):
         return obj
 
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     extra_context = {
         'title': 'Update post',
@@ -63,6 +64,6 @@ class PostUpdateView(UpdateView):
         return reverse('blog:post_detail', args=[self.kwargs.get('slug')])
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('blog:post_list')
