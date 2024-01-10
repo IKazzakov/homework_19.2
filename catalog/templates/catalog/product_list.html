@@ -16,6 +16,7 @@
                         <img src='{% media_tag product.image %}' width=550 height=320 alt="{{ product.name }}">
                         <p class="card-text">{{ product.description | truncatechars:100 }}</p>
                         <h1 class="card-title pricing-card-title">{{ product.price | floatformat:2 }}</h1>
+                        <p class="card-text"> Продавец: {{product.seller|default:'Skystore'}}</p>
                         <a type="button" class="btn btn-lg btn-block btn-outline-primary"
                            href="{% url 'catalog:product' product.pk %}">Подробнее</a>
                     </div>

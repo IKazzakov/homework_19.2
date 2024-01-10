@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView
@@ -26,13 +27,19 @@ class ProductListView(ListView):
         return context_data
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     extra_context = {
         'title': 'Create product',
     }
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.seller = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 
 class ProductDetailView(DetailView):
