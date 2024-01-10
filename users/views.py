@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth.views import LoginView as BaseLoginView
+from django.contrib.auth.views import LoginView as BaseLoginView, PasswordResetView
 from django.contrib.auth.views import LogoutView as BaseLogoutView
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, UpdateView, TemplateView
 
-from users.forms import UserRegisterForm, UserForm
+from users.forms import UserRegisterForm, UserForm, PasswordResetForm
 from users.models import User
 
 
@@ -70,4 +70,3 @@ class UserUpdateView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
-
