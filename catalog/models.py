@@ -31,6 +31,7 @@ class Product(models.Model):
     date_modified = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
     seller = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, verbose_name='Продавец', **NULLABLE)
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
     def __str__(self):
         return f'{self.name}'
