@@ -1,9 +1,11 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
     {% load media_tag %}
-    <div class="col-12 mb-5">
-        <a class="btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Add product</a>
-    </div>
+    {% if user.is_authenticated %}
+        <div class="col-12 mb-5">
+            <a class="btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Add product</a>
+        </div>
+    {% endif %}
     <div class="row text-center">
         {% for product in object_list %}
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -16,7 +18,7 @@
                         <img src='{% media_tag product.image %}' width=550 height=320 alt="{{ product.name }}">
                         <p class="card-text">{{ product.description | truncatechars:100 }}</p>
                         <h1 class="card-title pricing-card-title">{{ product.price | floatformat:2 }}</h1>
-                        <p class="card-text"> Продавец: {{product.seller|default:'Skystore'}}</p>
+                        <p class="card-text"> Продавец: {{ product.seller|default:'Skystore' }}</p>
                         <a type="button" class="btn btn-lg btn-block btn-outline-primary"
                            href="{% url 'catalog:product' product.pk %}">Подробнее</a>
                     </div>

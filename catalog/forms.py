@@ -1,6 +1,6 @@
 from django import forms
 
-from catalog.models import Product
+from catalog.models import Product, Version
 
 
 class StyleFormMixin:
@@ -15,7 +15,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        exclude = ['seller']
+        fields = ['name', 'description', 'image', 'category', 'price', 'is_published']
 
     def clean_name(self):
         cleaned_data = self.cleaned_data.get('name')
@@ -28,3 +28,9 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
         if cleaned_data.lower() in self.forbidden_words:
             raise forms.ValidationError('Недопустимое описание')
         return cleaned_data
+
+
+class VersionForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Version
+        fields = '__all__'
