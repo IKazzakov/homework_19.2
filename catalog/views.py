@@ -1,11 +1,12 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, DeleteView, UpdateView
 
 from catalog.forms import ProductForm, VersionForm
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
+from catalog.services import get_cached_categories
 
 
 # Create your views here.
@@ -65,7 +66,6 @@ class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
 
-
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data()
         VersionFormset = inlineformset_factory(Product, Version, form=VersionForm, extra=1)
@@ -120,3 +120,14 @@ class ContactsView(TemplateView):
         message = request.POST.get('message')
         print(f'name: {name}, phone: {phone}, message: {message}')
         return render(request, 'catalog/contacts.html', self.extra_context)
+
+
+class CategoriesListView(ListView):
+    model = Category
+    extra_context = {
+        'title': 'Категории',
+    }
+    template_name = 'catalog/categories.html'
+
+    def get_queryset(self):
+        return get_cached_categories()
